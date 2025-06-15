@@ -99,7 +99,7 @@ vim.g.have_nerd_font = false
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.o.number = false 
+vim.o.number = false
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
@@ -875,7 +875,28 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup {
+        suggestion = {
+          enabled = true,
+          auto_trigger = true, -- 🔥 ESSENCIAL: ativa sugestões automáticas enquanto digita
+          keymap = {
+            accept = '<Tab>', -- Aceitar sugestão
+            next = '<M-]>', -- Próxima sugestão
+            prev = '<M-[>', -- Sugestão anterior
+            dismiss = '<C-]>', -- Recusar
+          },
+        },
+        panel = {
+          enabled = true, -- Ativa o painel lateral (acesso manual)
+        },
+      }
+    end,
+  },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
